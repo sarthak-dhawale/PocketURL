@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta author="author" content="Sarthak Dhawale">
+    <meta name="color-scheme" content="light dark">
+
+    <title>PocketURL | Shorten. Share. Simplify.</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link rel="icon" href="assets/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Ambient background -->
+    <div class="bg-scene" aria-hidden="true">
+        <span class="blob blob-a"></span>
+        <span class="blob blob-b"></span>
+        <span class="grain"></span>
+    </div>
+
+    <header>
+        <div class="logo">
+            <span class="logo-mark"><i class="fa-solid fa-link"></i></span>
+            <h1>Pocket<span>URL</span></h1>
+        </div>
+
+        <button id="themeToggle" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon icon-moon"></i>
+            <i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+    </header>
+
+    <section class="hero">
+
+        <p class="eyebrow">Link compression &middot; on demand</p>
+
+        <h2 class="reveal">Shorten. Share. <span class="accent-text">Simplify.</span></h2>
+
+        <p class="reveal" style="--d:1">
+            Paste a long, unruly link. Get back something short enough to say out loud.
+        </p>
+
+        <!-- Signature ambient element: a URL visibly compressing -->
+        <div class="hero-demo reveal" style="--d:2" aria-hidden="true">
+            <span class="hero-demo-chip">watch it shrink</span>
+            <div class="hero-demo-track">
+                <span class="hero-demo-long">https://example.com/blog/2026/why-short-links-still-matter?ref=newsletter&amp;utm=jul</span>
+                <span class="hero-demo-short">pckt.url/x7F2q</span>
+            </div>
+        </div>
+
+    </section>
+
+    <main class="container">
+
+        <!-- STEP 1 : INPUT -->
+        <section class="card shorten-card reveal" style="--d:3">
+
+            <div class="card-head">
+                <span class="step">01</span>
+                <h3>Paste your long URL</h3>
+            </div>
+
+            <div class="input-group">
+
+                <input
+                    type="text"
+                    id="longUrl"
+                    inputmode="url"
+                    autocomplete="off"
+                    placeholder="https://example.com/very-long-url">
+
+                <button id="shortenBtn">
+                    <span class="btn-label"><i class="fa-solid fa-wand-magic-sparkles"></i> Shorten URL</span>
+                </button>
+
+            </div>
+
+            <p class="error" id="errorMessage" role="alert"></p>
+
+        </section>
+
+        <!-- CONNECTOR -->
+        <div class="connector" id="connectorOne" aria-hidden="true">
+            <span class="connector-line"></span>
+            <span class="connector-node"><i class="fa-solid fa-link"></i></span>
+            <span class="connector-dot"></span>
+        </div>
+
+        <!-- STEP 2 : RESULT -->
+        <section class="card result-card">
+
+            <div class="card-head">
+                <span class="step">02</span>
+                <h3>Your short URL</h3>
+            </div>
+
+            <div class="result-box">
+
+                <input
+                    type="text"
+                    id="shortUrl"
+                    readonly
+                    placeholder="Your shortened URL will appear here">
+
+                <button id="copyBtn">
+                    <span class="btn-label"><i class="fa-regular fa-copy"></i> Copy</span>
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- CONNECTOR -->
+        <div class="connector" id="connectorTwo" aria-hidden="true">
+            <span class="connector-line"></span>
+            <span class="connector-node"><i class="fa-solid fa-clock-rotate-left"></i></span>
+            <span class="connector-dot"></span>
+        </div>
+
+        <!-- STEP 3 : HISTORY -->
+        <section class="card history-card">
+
+            <div class="card-head history-head">
+                <div>
+                    <span class="step">03</span>
+                    <h3>Recent history</h3>
+                </div>
+
+                <button id="clearHistory">
+                    <i class="fa-solid fa-trash-can"></i> Clear
+                </button>
+            </div>
+
+            <ul id="historyList">
+                <li class="empty-state" id="emptyState">
+                    <i class="fa-regular fa-folder-open"></i>
+                    <span>Nothing shortened yet &mdash; your links will land here.</span>
+                </li>
+            </ul>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>
+            Built with <i class="fa-solid fa-heart"></i> by
+            <strong>Sarthak Dhawale</strong>
+        </p>
+    </footer>
+
+    <div class="toast" id="toast">
+        <i class="fa-solid fa-circle-check"></i>
+        <span id="toastText"></span>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
