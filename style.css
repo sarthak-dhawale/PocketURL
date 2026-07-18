@@ -467,6 +467,14 @@ body.dark .card:hover {
     gap: 8px;
 }
 
+/* live character counter under the input */
+.char-counter {
+    margin-top: 10px;
+    font-size: 12.5px;
+    font-family: var(--font-mono);
+    color: var(--ink-soft);
+}
+
 /* ================================
    ERROR
 ================================ */
@@ -513,6 +521,190 @@ body.dark .card:hover {
 
 .result-box button.copied .btn-label i::before {
     content: "\f00c";
+}
+
+/* "Show QR" button gets its own toned-down look */
+#showQrBtn {
+    background: linear-gradient(120deg, #6366F1, var(--accent));
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.3);
+}
+
+/* "Open" button: same shape as Show QR, slightly different gradient */
+#openBtn {
+    background: linear-gradient(120deg, #818CF8, #6366F1);
+    box-shadow: 0 10px 24px rgba(99, 102, 241, 0.3);
+}
+
+/* --- success bounce badge, shown briefly after a shorten --- */
+
+.success-badge {
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    color: var(--accent-mint);
+    font-weight: 600;
+    font-size: 14px;
+    opacity: 0;
+    transform: scale(.8);
+    pointer-events: none;
+}
+
+.success-badge.show {
+    animation: successPop 2.2s cubic-bezier(.34, 1.56, .64, 1) both;
+}
+
+@keyframes successPop {
+    0%   { opacity: 0; transform: scale(.6); }
+    15%  { opacity: 1; transform: scale(1.08); }
+    25%  { opacity: 1; transform: scale(1); }
+    85%  { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(.95); }
+}
+
+/* ================================
+   STATISTICS CARD
+================================ */
+
+.stats-card {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    text-align: center;
+    padding: 24px 30px;
+}
+
+.stats-card.show {
+    display: grid;
+    animation: fadeSlideUp .5s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.stat-label {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* ================================
+   QR CARD
+================================ */
+
+.qr-card {
+    max-height: 0;
+    padding: 0 30px;
+    margin-bottom: 0;
+    opacity: 0;
+    overflow: hidden;
+    border-width: 0;
+    transition: max-height .45s cubic-bezier(.16, 1, .3, 1),
+                padding .45s ease, opacity .35s ease, border-width .3s ease;
+}
+
+.qr-card.show {
+    max-height: 340px;
+    padding: 26px 30px;
+    opacity: 1;
+    border-width: 1px;
+}
+
+.qr-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.qr-card-head h4 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#downloadQrBtn {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface-solid);
+    color: var(--accent);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: transform .2s ease, background .2s ease;
+}
+
+#downloadQrBtn:hover {
+    transform: translateY(-1px);
+    background: rgba(79, 70, 229, 0.08);
+}
+
+.qr-body {
+    margin-top: 18px;
+    display: flex;
+    justify-content: center;
+}
+
+.qr-body img,
+.qr-body canvas {
+    border-radius: var(--radius-sm);
+    background: white;
+    padding: 10px;
+    box-shadow: var(--shadow-soft);
+}
+
+/* ================================
+   SITE PREVIEW CARD
+================================ */
+
+.preview-card {
+    display: none;
+    align-items: center;
+    gap: 14px;
+    margin-top: 14px;
+    padding: 14px 18px;
+    background: var(--surface);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-soft);
+    animation: fadeSlideUp .35s cubic-bezier(.16, 1, .3, 1) both;
+}
+
+.preview-card img {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--surface-solid);
+    object-fit: contain;
+}
+
+.preview-card h4 {
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    font-weight: 700;
+}
+
+.preview-card p {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    font-family: var(--font-mono);
 }
 
 /* ================================
@@ -618,6 +810,45 @@ body.dark .card:hover {
     transform: translateY(-1px);
 }
 
+.history-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding: 0 16px;
+    background: var(--surface-solid);
+    border: 1.5px solid transparent;
+    border-radius: var(--radius-md);
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+.history-search:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.14);
+}
+
+.history-search i {
+    color: var(--ink-soft);
+    font-size: 14px;
+}
+
+.history-search input {
+    flex: 1;
+    min-width: 0;
+    padding: 13px 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14.5px;
+    font-family: var(--font-mono);
+    color: var(--ink);
+}
+
+.history-search input::placeholder {
+    font-family: var(--font-body);
+    color: var(--ink-soft);
+}
+
 #historyList {
     list-style: none;
     display: flex;
@@ -636,6 +867,11 @@ body.dark .card:hover {
     border-radius: var(--radius-md);
     animation: fadeSlideUp .5s cubic-bezier(.16, 1, .3, 1) both;
     transition: transform .25s ease, border-color .25s ease;
+}
+
+/* whole row is clickable -> opens the short link */
+#historyList li:not(.empty-state) {
+    cursor: pointer;
 }
 
 #historyList li:hover {
@@ -665,6 +901,12 @@ body.dark .card:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 320px;
+}
+
+.history-time {
+    font-size: 11.5px;
+    color: var(--ink-soft);
+    opacity: .8;
 }
 
 .history-actions {
@@ -697,6 +939,15 @@ body.dark .card:hover {
     background: rgba(79, 70, 229, 0.08);
 }
 
+.history-copy.copied {
+    color: var(--accent-mint);
+    border-color: var(--accent-mint);
+}
+
+.history-copy.copied i::before {
+    content: "\f00c";
+}
+
 .history-delete:hover {
     color: var(--danger);
     border-color: var(--danger);
@@ -704,17 +955,35 @@ body.dark .card:hover {
 }
 
 .empty-state {
+    flex-direction: column;
     justify-content: center !important;
     text-align: center;
     color: var(--ink-soft);
     font-size: 14px;
-    gap: 10px !important;
-    padding: 22px 14px !important;
+    gap: 6px !important;
+    padding: 30px 14px !important;
     border-style: dashed !important;
 }
 
 .empty-state i {
-    font-size: 17px;
+    font-size: 26px;
+    color: var(--accent);
+    animation: floatIcon 2.6s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.empty-title {
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.empty-sub {
+    font-size: 12.5px;
+    line-height: 1.5;
 }
 
 /* ================================
@@ -770,36 +1039,10 @@ footer i {
    LOADING
 ================================ */
 
+/* button just dims + disables; spinner + text swap is handled in JS */
 .loading {
     pointer-events: none;
-    opacity: .75;
-}
-
-.loading .btn-label {
-    visibility: hidden;
-}
-
-.loading {
-    position: relative;
-}
-
-.loading::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 18px;
-    height: 18px;
-    margin: -9px 0 0 -9px;
-    border: 2.5px solid rgba(255, 255, 255, 0.4);
-    border-top: 2.5px solid white;
-    border-radius: 50%;
-    animation: spin .8s linear infinite;
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+    opacity: .8;
 }
 
 /* ================================
@@ -859,5 +1102,9 @@ input:focus-visible {
 
     .history-long {
         max-width: 160px;
+    }
+
+    .stats-card {
+        grid-template-columns: 1fr;
     }
 }

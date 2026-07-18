@@ -19,7 +19,7 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
     <link rel="icon" href="assets/favicon.ico">
-    
+
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -91,9 +91,21 @@
 
             </div>
 
+            <!-- live character counter -->
+            <p class="char-counter" id="charCounter">0 characters</p>
+
             <p class="error" id="errorMessage" role="alert"></p>
 
         </section>
+
+        <!-- live favicon/site preview while typing -->
+        <div class="preview-card" id="previewCard">
+            <img id="siteIcon" alt="">
+            <div>
+                <h4 id="siteName">Website</h4>
+                <p id="siteDomain">example.com</p>
+            </div>
+        </div>
 
         <!-- CONNECTOR -->
         <div class="connector" id="connectorOne" aria-hidden="true">
@@ -122,8 +134,48 @@
                     <span class="btn-label"><i class="fa-regular fa-copy"></i> Copy</span>
                 </button>
 
+                <!-- revealed only after a URL has been shortened -->
+                <button id="openBtn" hidden>
+                    <span class="btn-label">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        Open
+                    </span>
+                </button>
+
+                <button id="showQrBtn" hidden>
+                    <span class="btn-label"><i class="fa-solid fa-qrcode"></i> Show QR</span>
+                </button>
+
             </div>
 
+            <!-- success bounce, shown briefly after each shorten -->
+            <div class="success-badge" id="successBadge">
+                <i class="fa-solid fa-circle-check"></i> URL Shortened Successfully
+            </div>
+
+        </section>
+
+        <!-- URL STATISTICS (hidden until first successful shorten) -->
+        <section class="card stats-card" id="statsCard">
+            <div class="stat">
+                <span class="stat-value" id="charsSaved">0</span>
+                <span class="stat-label">Characters Saved</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value" id="compression">0%</span>
+                <span class="stat-label">Compression</span>
+            </div>
+        </section>
+
+        <!-- QR CODE CARD (slides down on "Show QR") -->
+        <section class="card qr-card" id="qrCard">
+            <div class="qr-card-head">
+                <h4><i class="fa-solid fa-qrcode"></i> QR Code</h4>
+                <button id="downloadQrBtn" title="Download PNG" aria-label="Download QR as PNG">
+                    <i class="fa-solid fa-download"></i>
+                </button>
+            </div>
+            <div class="qr-body" id="qrBody"></div>
         </section>
 
         <!-- CONNECTOR -->
@@ -147,10 +199,19 @@
                 </button>
             </div>
 
+            <div class="history-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                    type="text"
+                    id="searchHistory"
+                    placeholder="Search history...">
+            </div>
+
             <ul id="historyList">
                 <li class="empty-state" id="emptyState">
                     <i class="fa-regular fa-folder-open"></i>
-                    <span>Nothing shortened yet &mdash; your links will land here.</span>
+                    <span class="empty-title">No links yet</span>
+                    <span class="empty-sub">Your recently shortened URLs will appear here.<br>Start by shortening your first URL.</span>
                 </li>
             </ul>
 
@@ -170,6 +231,8 @@
         <span id="toastText"></span>
     </div>
 
+    <!-- QR generation library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="script.js"></script>
 
 </body>
