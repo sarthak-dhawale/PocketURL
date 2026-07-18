@@ -25,18 +25,6 @@ A modern and responsive URL shortener built with **HTML, CSS, and JavaScript**, 
 
 ---
 
-## 📸 Screenshots
-
-### Light Mode
-
-![Light Mode](screenshots/lightmode_1.png)
-
-### Dark Mode
-
-![Dark Mode](screenshots/darkmode_1.png)
-
----
-
 ## 🚀 Live Demo
 
 Coming Soon
