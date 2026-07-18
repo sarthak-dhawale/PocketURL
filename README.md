@@ -27,8 +27,23 @@ A modern and responsive URL shortener built with **HTML, CSS, and JavaScript**, 
 
 ## 🚀 Live Demo
 
-Coming Soon
+https://pocketurl-app.netlify.app/
+(NOTE - users need to supply their own API key to run it locally)
 
+---
+## 🔑 API Setup
+
+PocketURL uses the TinyURL API.
+1. Create a TinyURL account.
+2. Generate your API key.
+3. Open `script.js`.
+4. Replace:
+
+```javascript
+const API_KEY = "your_api";
+```
+
+with your own TinyURL API Key.
 ---
 
 ## 🛠 Tech Stack
@@ -83,23 +98,6 @@ cd PocketURL
 ```
 
 Run using the VS Code **Live Server** extension or open `index.html` directly in your browser.
-
----
-
-## 🔑 API Setup
-
-PocketURL uses the TinyURL API.
-1. Create a TinyURL account.
-2. Generate your API key.
-3. Open `script.js`.
-4. Replace:
-
-```javascript
-const API_KEY = "your_api";
-```
-
-with your own TinyURL API Key.
-
 
 ---
 
