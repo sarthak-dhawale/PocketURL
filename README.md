@@ -8,20 +8,19 @@ A modern and responsive URL shortener built with **HTML, CSS, and JavaScript**, 
 
 ## ✨ Features
 
-- 🔗 Shorten long URLs using TinyURL API
-- 📋 One-click copy to clipboard
-- 🔗 Open shortened URL in a new tab
-- 📱 Generate QR Code for every shortened URL
-- ⬇️ Download QR Code as PNG
-- 🌐 Live website favicon preview
-- 📊 URL statistics (Characters Saved & Compression)
-- 📝 Recent history with Local Storage
-- 🔍 Search through history
-- 🕒 Relative timestamps (Just now, 2 mins ago, etc.)
-- 🚫 Duplicate history prevention
-- 🌙 Dark / Light Mode
-- 📱 Fully Responsive Design
-- ✨ Smooth animations and glassmorphism UI
+- Shorten long URLs using TinyURL API
+- One-click copy to clipboard
+- Open shortened URL in a new tab
+- Generate QR Code for every shortened URL
+- Download QR Code as PNG
+- URL statistics (Characters Saved & Compression)
+- Recent history with Local Storage
+- Search through history
+- Relative timestamps (Just now, 2 mins ago, etc.)
+- Duplicate history prevention
+- Dark / Light Mode
+- Fully Responsive Design
+- Smooth animations and glassmorphism UI
 
 ---
 
@@ -119,20 +118,6 @@ Run using the VS Code **Live Server** extension or open `index.html` directly in
 - Success Animation
 - Improved Empty State
 - Duplicate History Prevention
-
----
-
-## 🚀 Future Improvements
-
-- User Authentication
-- Custom URL Aliases
-- Analytics Dashboard
-- Click Tracking
-- Password Protected Links
-- Expiring Links
-- Backend Integration
-- MongoDB Database
-- User Profiles
 
 ---
 
